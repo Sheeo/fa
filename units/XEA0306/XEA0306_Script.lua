@@ -114,11 +114,13 @@ XEA0306 = Class(TAirUnit) {
 	OnTransportAttach = function(self, attachBone, unit)
 		if self:ShieldIsOn() then					
 			unit:SetCanTakeDamage(false)
-		end	
+		end
+        TAirUnit.OnTransportAttach(self, attachBone, unit)
 	end,
 	
 	OnTransportDetach = function(self, attachBone, unit)
 		unit:SetCanTakeDamage(true)
+        TAirUnit.OnTransportDetach(self, attachBone, unit)
 	end,
 --End fix
 	
