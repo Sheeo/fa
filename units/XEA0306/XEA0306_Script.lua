@@ -114,14 +114,32 @@ XEA0306 = Class(TAirUnit) {
 	OnTransportAttach = function(self, attachBone, unit)
 		if self:ShieldIsOn() then					
 			unit:SetCanTakeDamage(false)
-		end
-        TAirUnit.OnTransportAttach(self, attachBone, unit)
+		end	
+		TAirUnit.OnTransportAttach(self, attachBone, unit)
 	end,
 	
 	OnTransportDetach = function(self, attachBone, unit)
 		unit:SetCanTakeDamage(true)
-        TAirUnit.OnTransportDetach(self, attachBone, unit)
+		TAirUnit.OnTransportDetach(self, attachBone, unit)
 	end,
+
+    OnDamage = function(self, instigator, amount, vector, damageType)
+        if self.CanTakeDamage or EntityCategoryContains(categories.NUKE, instigator) then
+			if EntityCategoryContains(categories.NUKE, instigator) then				-- Check to make sure Nukes go through
+				local Units = self:GetCargo()
+				for _, U in Units do
+					U:SetCanTakeDamage(true)
+				end
+				self:SetCanTakeDamage(true)
+			end	
+				
+            self:DoOnDamagedCallbacks(instigator)
+
+            if self:GetShieldType() != 'Personal' or not self:ShieldIsUp() then    -- let personal shields handle the damage
+                self:DoTakeDamage(instigator, amount, vector, damageType)
+            end
+        end
+    end,	
 --End fix
 	
     # When one of our attached units gets killed, detach it
