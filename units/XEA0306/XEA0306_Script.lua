@@ -138,6 +138,13 @@ XEA0306 = Class(TAirUnit) {
             if self:GetShieldType() != 'Personal' or not self:ShieldIsUp() then    -- let personal shields handle the damage
                 self:DoTakeDamage(instigator, amount, vector, damageType)
             end
+            if self:ShieldIsUp() and EntityCategoryContains(categories.NUKE, instigator) then    -- If the Nuke damage only partially killed the Shield,
+				local Units = self:GetCargo()                                                    -- Reset the protection
+				for _, U in Units do
+					U:SetCanTakeDamage(false)
+				end
+				self:SetCanTakeDamage(false)
+            end
         end
     end,	
 --End fix
