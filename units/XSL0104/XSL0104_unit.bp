@@ -259,7 +259,7 @@ UnitBlueprint {
                 },
                 {
                     MuzzleBones = {
-                        'Turret_Muzzle01', # Turret_Muzzle02 this fixes the shoot to ground bug when moving.... HALF FIX at best
+                        'Turret_Muzzle02', # Changed back, see UseFiringSolutionInsteadOfAimBone below
                     },
                     RackBone = 'Turret_Barrel',
                 },
@@ -300,6 +300,7 @@ UnitBlueprint {
             TurretYawRange = 180,
             TurretYawSpeed = 240,
             Turreted = true,
+            UseFiringSolutionInsteadOfAimBone = true, #fixes bug where the muzzle would fire into the ground while the unit was walking
             WeaponCategory = 'Anti Air',
         },
     },
