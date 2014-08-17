@@ -33,7 +33,7 @@ local bomber_table = {}
 # But normally that may never happen
 local default_value = 4.75
 
-CalculateBallisticAcceleration = function (weapon, proj, ProjectilesPerOnFire)
+CalculateBallisticAcceleration = function (weapon, proj, ProjectilesPerOnFire, MuzzleSalvoDelay)
    
    local launcher = proj:GetLauncher()
    if not launcher then return default_value end
