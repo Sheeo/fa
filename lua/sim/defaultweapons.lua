@@ -5,7 +5,7 @@
 #**
 #**  Summary  :  Default definitions of weapons
 #**
-#**  Copyright © 2005 Gas Powered Games, Inc.  All rights reserved.
+#**  Copyright Â© 2005 Gas Powered Games, Inc.  All rights reserved.
 #****************************************************************************
 
 local Weapon = import('/lua/sim/Weapon.lua').Weapon
@@ -94,7 +94,7 @@ DefaultProjectileWeapon = Class(Weapon) {
 	###new for CBFP
         local bp = self:GetBlueprint()
         if bp.FixBombTrajectory then
-            self.CBFP_CalcBallAcc = { Do = true, ProjectilesPerOnFire = (bp.ProjectilesPerOnFire or 1), }
+            self.CBFP_CalcBallAcc = { Do = true, ProjectilesPerOnFire = (bp.ProjectilesPerOnFire or 1), MuzzleSalvoDelay = (bp.MuzzleSalvoDelay or 0.1), }
         end
 
     end,
@@ -778,8 +778,8 @@ DefaultProjectileWeapon = Class(Weapon) {
     
     ##3 new functions for CBFP
     CheckBallisticAcceleration = function(self, proj)                          # [152]
-        if self.CBFP_CalcBallAcc and self.CBFP_CalcBallAcc.Do then
-            local acc = CalculateBallisticAcceleration( self, proj, self.CBFP_CalcBallAcc.ProjectilesPerOnFire )
+        if self.CBFP_CalcBallAcc and self.CBFP_CalcBallAcc.Do then #for MuzzleSalvoDelay Fix
+            local acc = CalculateBallisticAcceleration( self, proj, self.CBFP_CalcBallAcc.ProjectilesPerOnFire, self.CBFP_CalcBallAcc.MuzzleSalvoDelay )
             proj:SetBallisticAcceleration( -acc) # change projectile trajectory so it hits the target, cure for engine bug
         end
     end,
