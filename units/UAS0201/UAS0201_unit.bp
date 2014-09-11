@@ -336,9 +336,9 @@ UnitBlueprint {
             RackBones = {
                 {
                     MuzzleBones = {
-                        'UAS0201',
+                        'Projectile05',
                     },
-                    RackBone = 'UAS0201',
+                    RackBone = 'Projectile05,
                 },
             },
             RackFireTogether = false,
@@ -394,6 +394,13 @@ UnitBlueprint {
                     },
                     RackBone = 'Projectile01',
                 },
+                {
+                    MuzzleBones = {
+                        'Projectile02',
+                        'Projectile04',
+                    },
+                    RackBone = 'Projectile02',
+                },
             },
             RackFireTogether = false,
             RackRecoilDistance = 0,
@@ -438,10 +445,17 @@ UnitBlueprint {
             RackBones = {
                 {
                     MuzzleBones = {
-                        'Projectile02',
-                        'Projectile04',
+                        'Projectile06',
+                        'Projectile08',
                     },
-                    RackBone = 'Projectile02',
+                    RackBone = 'Projectile06',
+                },
+                {
+                    MuzzleBones = {
+                        'Projectile07',
+                        'Projectile09',
+                    },
+                    RackBone = 'Projectile09',
                 },
             },
             RackFireTogether = false,
