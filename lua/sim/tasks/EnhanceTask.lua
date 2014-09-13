@@ -62,16 +62,15 @@ EnhanceTask = Class(ScriptTask) {
                     current = current + frac
                     unit.WorkProgress = current
                 end
-            
-                if( ( self.LastProgress < 0.25 and current >= 0.25 ) or
-                    ( self.LastProgress < 0.50 and current >= 0.50 ) or
-                    ( self.LastProgress < 0.75 and current >= 0.75 ) ) then
-                    unit:OnBuildProgress(self.LastProgress,current)
-                end
-            
-                self.LastProgress = current
             end
             
+            if( ( self.LastProgress < 0.25 and current >= 0.25 ) or
+                ( self.LastProgress < 0.50 and current >= 0.50 ) or
+                ( self.LastProgress < 0.75 and current >= 0.75 ) ) then
+                    unit:OnBuildProgress(self.LastProgress,current)
+            end
+            
+            self.LastProgress = current
             unit:SetWorkProgress(current)
             
             if( current < 1.0 ) then
