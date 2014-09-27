@@ -834,6 +834,12 @@ UnitBlueprint {
                     },
                     RackBone = 'Projectile01',
                 },
+                {
+                    MuzzleBones = {
+                        'Projectile02',
+                    },
+                    RackBone = 'Projectile02',
+                },
             },
             RackFireTogether = false,
             RackRecoilDistance = 0,
